@@ -8,9 +8,9 @@
 * [Title of Content 2](#Title-2)
 * [Title of Content 3](#Title-3)
 
-# Finalized Code
-## QIIME2
+## Finalized Code
+### QIIME2
 * [Title of Content 4](#Title-4)
   
-## R Studio
+### R Studio
 * [Title of Content 5](#Title-5)
