@@ -1,11 +1,12 @@
 # Meeting Minutes - October 4
 
 # Chosen Dataset
-* Captive vs Wild Animals? -> original study looked at effect of captivity on mammalian gut microbiome diversity (alpha/beta diversity differences & specific taxa they were associated with)
+* Captive vs Wild Animals? -> https://pubmed.ncbi.nlm.nih.gov/28985326/
+* Original study looked at effect of captivity on mammalian gut microbiome diversity (alpha/beta diversity differences & specific taxa they were associated with)
 * Metadata categories include: 
-* animal type
-* location (ie. from zoo/park)
-* country
+* Animal type
+* Location (ie. from zoo/park)
+* Country
 * Taxonomy (ie. phylum, class, order, family, genus, species)
 * Activity (ie. crepuscular, diurnal, nocturnal
 * Diet
