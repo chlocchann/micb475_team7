@@ -11,11 +11,11 @@
 Data Wrangling focuses on defining metadata to better suit purposes of modelling -> ex. Changing numericals to categoricals
 Data Overview focuses on entire QIIME2 pipeline -> according to previous modelling projects, still need to go through QIIME2; should we include both the data overview and data wrangling information in our proposal?
 
-## Tiff’s Thoughts 
-# Determine which variables to use/filter out 
-- the paper already studied which host factors contribute to difference in gut microbial diversity in wild vs captive animals (diet type, fermentation type, genus)
+# Tiff’s Thoughts 
+## Determine which variables to use/filter out 
+- tThe paper already studied which host factors contribute to difference in gut microbial diversity in wild vs captive animals (diet type, fermentation type, genus)
 - If we’re still answering the question: what metadata characteristics are associated with increased/decreased microbial diversity in the mammalian gut microbiome? →  which variables should we use?
-* Metadata categories
+### Metadata categories
 - Animal type
 - Location (ie. from zoo/park)
 - The geographic location of the samples have different environmental factors that can affect gut microbiome diversity.
@@ -28,7 +28,7 @@ Data Overview focuses on entire QIIME2 pipeline -> according to previous modelli
 - Trophic level
 - Conservation status → they showed not significant 
 
-# Go through our aims, do we need to hit 4?
+## Go through our aims, do we need to hit 4?
 
-# Research Objective VS aim/rationale section
+## Research Objective VS aim/rationale section
 Is the first section background information about why for ex, we need to research which variables are the most likely to be associated. Then the next section is how we plan to identify those variables?
