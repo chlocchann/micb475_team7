@@ -11,6 +11,12 @@
 Data Wrangling focuses on defining metadata to better suit purposes of modelling -> ex. Changing numericals to categoricals
 Data Overview focuses on entire QIIME2 pipeline -> according to previous modelling projects, still need to go through QIIME2; should we include both the data overview and data wrangling information in our proposal?
 
+## DENOISING
+![Screenshot 2024-10-10 at 1 50 43 PM](https://github.com/user-attachments/assets/5c8e74c1-b63b-48e9-9911-867e41dad5fc)
+* Thinking of trimming at 233 bp -> includes low quality read at 206bp, but average of reads is still > Phred Score = 30; worth it to preserve base information? 
+* Original paper trimmed at 100bp
+* Unsure what lack of boxes means on Interactive Quality Plot? (sprinkled in starting at 183bp)
+
 # Tiff’s Thoughts 
 ## Determine which variables to use/filter out 
 - tThe paper already studied which host factors contribute to difference in gut microbial diversity in wild vs captive animals (diet type, fermentation type, genus)
