@@ -17,6 +17,15 @@
 * Original paper trimmed at 100bp
 * Unsure what lack of boxes means on Interactive Quality Plot? (sprinkled in starting at 183bp)
 
+## TRAINING A CLASSIFIER
+* Original paper assigned taxonomy using the RDP classifier and the Greengenes August 2013 release as the reference database.
+* DNA amplification performed on V4 region of 16s rRNA gene -> 515F (Caporaso)–806R (Caporaso) primers -> FWD:GTGCCAGCMGCCGCGGTAA;REV:GGACTACHVGGGTWTCTAAT
+* Updated V4 primers (forward, 2016; reverse, 2015): 515F (Parada)–806R (Apprill)
+FWD:GTGYCAGCMGCCGCGGTAA; REV:GGACTACNVGGGTWTCTAAT
+
+## DIVERSITY ANALYSES
+* Original paper used Shannons (Alpha) & Bray-Curtis (Beta)
+
 # Tiff’s Thoughts 
 ## Determine which variables to use/filter out 
 - The paper already studied which host factors contribute to difference in gut microbial diversity in wild vs captive animals (diet type, fermentation type, genus)
