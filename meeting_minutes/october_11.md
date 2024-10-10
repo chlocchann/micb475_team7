@@ -8,8 +8,8 @@
 
 # Data Overview/Data Wrangling Section
 * CLARIFICATION: Do we not need to include information on how we’re planning to process our data using QIIME2 in the proposal if the Data Wrangling rubric replaces the Data Overview one?
-## Data Wrangling focuses on defining metadata to better suit purposes of modelling -> ex. Changing numericals to categoricals
-## Data Overview focuses on entire QIIME2 pipeline -> according to previous modelling projects, still need to go through QIIME2; should we include both the data overview and data wrangling information in our proposal?
+* Data Wrangling focuses on defining metadata to better suit purposes of modelling -> ex. Changing numericals to categoricals
+* Data Overview focuses on entire QIIME2 pipeline -> according to previous modelling projects, still need to go through QIIME2; should we include both the data overview and data wrangling information in our proposal?
 
 ## DENOISING
 ![Screenshot 2024-10-10 at 1 50 43 PM](https://github.com/user-attachments/assets/5c8e74c1-b63b-48e9-9911-867e41dad5fc)
