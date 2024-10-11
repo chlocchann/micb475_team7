@@ -72,6 +72,7 @@ scp root@10.19.139.186:/data/team7_captivevswild/zoo_table.qzv .
 scp root@10.19.139.186:/data/team7_captivevswild/rep_seqs.qzv .
 
 ## TRAINING & USING CLASSIFIER FOR TAXONOMIC ANALYSIS ##
+
 # extracting V4 16s rRNA region from Silva Database
 # used 515F (Parada)–806R (Apprill) V4 amplification primers
 qiime feature-classifier extract-reads \
@@ -126,6 +127,7 @@ scp root@10.19.139.186:/data/team7_captivevswild/taxa_bar_plots.qzv .
 # [INSERT]
 
 ## EXPORTING OTU, TAXONOMY & ROOTED TREE FILES ##
+
 # creating directory for export
 mkdir team7_exports
 
