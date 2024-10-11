@@ -98,8 +98,29 @@ qiime metadata tabulate \
   --m-input-file taxonomy.qza \
   --o-visualization taxonomy.qzv
 
-## TAXONOMIC ANALYSIS & FILTERING ##
-# [INSERT]
+## FILTERING & TAXONOMIC ANALYSIS ##
+
+# filtering out mitochondrial and chloroplast samples
+qiime taxa filter-table \
+  --i-table zoo_table.qza \
+  --i-taxonomy taxonomy.qza \
+  --p-exclude mitochondria,chloroplast \
+  --o-filtered-table zoo_filtered_table.qza
+
+qiime feature-table summarize \
+  --i-table zoo_filtered_table.qza \
+  --o-visualization zoo_filtered_table.qzv \
+  --m-sample-metadata-file /data/team7_captivevswild/zoo_metadata.txt
+
+# taxonomy barplots
+qiime taxa barplot \
+  --i-table zoo_filtered_table.qza \
+  --i-taxonomy taxonomy.qza \
+  --m-metadata-file /data/team7_captivevswild/zoo_metadata.txt \
+  --o-visualization taxa_bar_plots.qzv
+
+# transferring taxa bar plot visualization file to local device
+scp root@10.19.139.186:/data/team7_captivevswild/taxa_bar_plots.qzv .
 
 ## PHYLOGENETIC DIVERSITY ANALYSES ##
 # [INSERT]
