@@ -99,6 +99,9 @@ qiime metadata tabulate \
   --m-input-file taxonomy.qza \
   --o-visualization taxonomy.qzv
 
+# transferring taxonomy file to local device
+scp root@10.19.139.186:/data/team7_captivevswild/taxonomy.qzv .
+
 ## FILTERING & TAXONOMIC ANALYSIS ##
 
 # filtering out mitochondrial and chloroplast samples
@@ -124,7 +127,33 @@ qiime taxa barplot \
 scp root@10.19.139.186:/data/team7_captivevswild/taxa_bar_plots.qzv .
 
 ## PHYLOGENETIC DIVERSITY ANALYSES ##
-# [INSERT]
+
+# generating a tree for phylogenetic diversity analyses
+qiime phylogeny align-to-tree-mafft-fasttree \
+  --i-sequences rep-seqs.qza \
+  --o-alignment aligned-rep-seqs.qza \
+  --o-masked-alignment masked-aligned-rep-seqs.qza \
+  --o-tree unrooted-tree.qza \
+  --o-rooted-tree rooted-tree.qza 
+
+# alpha-rarefaction
+qiime diversity alpha-rarefaction \
+  --i-table zoo_filtered_table.qza \
+  --i-phylogeny rooted-tree.qza \
+  --p-max-depth [INSERT] \
+  --m-metadata-file /data/team7_captivevswild/zoo_metadata.txt \
+  --o-visualization alpha-rarefaction.qzv
+
+# transferring alpha rarefaction file to local device
+scp root@10.19.139.140:/data/team7_captivevswild/alpha-rarefaction.qzv .
+
+# calculating alpha- & beta-diversity metrics
+qiime diversity core-metrics-phylogenetic \
+  --i-phylogeny rooted-tree.qza \
+  --i-table zoo_filtered_table.qza \
+  --p-sampling-depth [INSERT] \
+  --m-metadata-file /data/team7_captivevswild/zoo_metadata.txt \
+  --output-dir core-metrics-results
 
 ## EXPORTING OTU, TAXONOMY & ROOTED TREE FILES ##
 
@@ -135,7 +164,6 @@ mkdir team7_exports
 qiime tools export \
   --input-path /data/team7_captivevswild/table.qza \
   --output-path /data/team7_captivevswild/team7_exports
-
 biom convert -i feature-table.biom --to-tsv -o feature-table.txt
 
 # taxonomy export
