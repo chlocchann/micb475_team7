@@ -42,6 +42,10 @@ scp root@10.19.139.186:/data/team7_captivevswild/demux.qzv .
 
 ## DETERMINING & VISUALIZING ASVs ##
 
+# create a detached screen session & activate QIIME2 to run overnight
+screen -S zoo_dada2
+conda activate qiime2-2023.7
+
 # determining ASVs with DADA2
 # based on qiime2 visualization of demux.qza, truncation length of 233bp was selected
 qiime dada2 denoise-single \
@@ -72,6 +76,10 @@ scp root@10.19.139.186:/data/team7_captivevswild/zoo_table.qzv .
 scp root@10.19.139.186:/data/team7_captivevswild/rep_seqs.qzv .
 
 ## TRAINING & USING CLASSIFIER FOR TAXONOMIC ANALYSIS ##
+
+# create a detached screen session, extract V4 rRNA seqs from Silva & run overnight
+screen -S zoo_silva
+conda activate qiime2-2023.7
 
 # extracting V4 16s rRNA region from Silva Database
 # used 515F (Parada)–806R (Apprill) V4 amplification primers
