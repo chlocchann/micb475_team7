@@ -132,13 +132,14 @@ qiime taxa barplot \
   --o-visualization taxa_bar_plots.qzv
 
 # transferring taxa bar plot visualization file to local device
+scp root@10.19.139.186:/data/team7_captivevswild/zoo_filtered_table.qzv .
 scp root@10.19.139.186:/data/team7_captivevswild/taxa_bar_plots.qzv .
 
 ## PHYLOGENETIC DIVERSITY ANALYSES ##
 
 # generating a tree for phylogenetic diversity analyses
 qiime phylogeny align-to-tree-mafft-fasttree \
-  --i-sequences rep-seqs.qza \
+  --i-sequences rep_seqs.qza \
   --o-alignment aligned-rep-seqs.qza \
   --o-masked-alignment masked-aligned-rep-seqs.qza \
   --o-tree unrooted-tree.qza \
@@ -148,7 +149,7 @@ qiime phylogeny align-to-tree-mafft-fasttree \
 qiime diversity alpha-rarefaction \
   --i-table zoo_filtered_table.qza \
   --i-phylogeny rooted-tree.qza \
-  --p-max-depth [INSERT] \
+  --p-max-depth 214000 \
   --m-metadata-file /data/team7_captivevswild/zoo_metadata.txt \
   --o-visualization alpha-rarefaction.qzv
 
@@ -172,6 +173,7 @@ mkdir team7_exports
 qiime tools export \
   --input-path /data/team7_captivevswild/table.qza \
   --output-path /data/team7_captivevswild/team7_exports
+
 biom convert -i feature-table.biom --to-tsv -o feature-table.txt
 
 # taxonomy export
