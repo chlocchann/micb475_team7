@@ -15,7 +15,9 @@ cd team7_captivevswild
 # copy zoo data into working directory
 cp -r /mnt/datasets/project_2/zoo/seqs .
 cp /mnt/datasets/project_2/zoo/zoo_manifest.txt .
-cp /mnt/datasets/project_2/zoo/zoo_metadata.txt .
+
+# upload zoo metadata.tsv file into working directory
+scp zoo_metadata_edited.tsv root@10.19.139.186:/data/team7_captivevswild 
 
 ## IMPORTING AND DEMULTIPLEXING USING MANIFEST ## 
 
@@ -64,7 +66,7 @@ qiime metadata tabulate \
 qiime feature-table summarize \
   --i-table zoo_table.qza \
   --o-visualization zoo_table.qzv \
-  --m-sample-metadata-file /data/team7_captivevswild/zoo_metadata.txt
+  --m-sample-metadata-file /data/team7_captivevswild/zoo_metadata_edited.tsv
   
 qiime feature-table tabulate-seqs \
   --i-data rep_seqs.qza \
@@ -99,7 +101,7 @@ qiime feature-classifier fit-classifier-naive-bayes \
 # assigning taxonomy to reads using trained classifier
 qiime feature-classifier classify-sklearn \
   --i-classifier classifier.qza \
-  --i-reads rep-seqs.qza \
+  --i-reads rep_seqs.qza \
   --o-classification taxonomy.qza
 
 # visualizing taxonomy file
@@ -122,13 +124,13 @@ qiime taxa filter-table \
 qiime feature-table summarize \
   --i-table zoo_filtered_table.qza \
   --o-visualization zoo_filtered_table.qzv \
-  --m-sample-metadata-file /data/team7_captivevswild/zoo_metadata.txt
+  --m-sample-metadata-file /data/team7_captivevswild/zoo_metadata_edited.tsv
 
 # taxonomy barplots
 qiime taxa barplot \
   --i-table zoo_filtered_table.qza \
   --i-taxonomy taxonomy.qza \
-  --m-metadata-file /data/team7_captivevswild/zoo_metadata.txt \
+  --m-metadata-file /data/team7_captivevswild/zoo_metadata_edited.tsv \
   --o-visualization taxa_bar_plots.qzv
 
 # transferring taxa bar plot visualization file to local device
@@ -140,8 +142,8 @@ scp root@10.19.139.186:/data/team7_captivevswild/taxa_bar_plots.qzv .
 # generating a tree for phylogenetic diversity analyses
 qiime phylogeny align-to-tree-mafft-fasttree \
   --i-sequences rep_seqs.qza \
-  --o-alignment aligned-rep-seqs.qza \
-  --o-masked-alignment masked-aligned-rep-seqs.qza \
+  --o-alignment aligned-rep_seqs.qza \
+  --o-masked-alignment masked-aligned-rep_seqs.qza \
   --o-tree unrooted-tree.qza \
   --o-rooted-tree rooted-tree.qza 
 
@@ -150,7 +152,7 @@ qiime diversity alpha-rarefaction \
   --i-table zoo_filtered_table.qza \
   --i-phylogeny rooted-tree.qza \
   --p-max-depth 214000 \
-  --m-metadata-file /data/team7_captivevswild/zoo_metadata.txt \
+  --m-metadata-file /data/team7_captivevswild/zoo_metadata_edited.tsv \
   --o-visualization alpha-rarefaction.qzv
 
 # transferring alpha rarefaction file to local device
@@ -161,7 +163,7 @@ qiime diversity core-metrics-phylogenetic \
   --i-phylogeny rooted-tree.qza \
   --i-table zoo_filtered_table.qza \
   --p-sampling-depth [INSERT] \
-  --m-metadata-file /data/team7_captivevswild/zoo_metadata.txt \
+  --m-metadata-file /data/team7_captivevswild/zoo_metadata_edited.tsv \
   --output-dir core-metrics-results
 
 ## EXPORTING OTU, TAXONOMY & ROOTED TREE FILES ##
