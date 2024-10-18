@@ -16,8 +16,10 @@ cd team7_captivevswild
 cp -r /mnt/datasets/project_2/zoo/seqs .
 cp /mnt/datasets/project_2/zoo/zoo_manifest.txt .
 
+# removed “/“ from metadata column names and replaced with “_” in Excel, then exported  as zoo_metadata.tsv
 # upload zoo metadata.tsv file into working directory
-scp zoo_metadata_edited.tsv root@10.19.139.186:/data/team7_captivevswild 
+scp zoo_metadata.tsv root@10.19.139.186:/data/team7_captivevswild 
+
 
 ## IMPORTING AND DEMULTIPLEXING USING MANIFEST ## 
 
@@ -66,7 +68,7 @@ qiime metadata tabulate \
 qiime feature-table summarize \
   --i-table zoo_table.qza \
   --o-visualization zoo_table.qzv \
-  --m-sample-metadata-file /data/team7_captivevswild/zoo_metadata_edited.tsv
+  --m-sample-metadata-file /data/team7_captivevswild/zoo_metadata.tsv
   
 qiime feature-table tabulate-seqs \
   --i-data rep_seqs.qza \
@@ -124,13 +126,13 @@ qiime taxa filter-table \
 qiime feature-table summarize \
   --i-table zoo_filtered_table.qza \
   --o-visualization zoo_filtered_table.qzv \
-  --m-sample-metadata-file /data/team7_captivevswild/zoo_metadata_edited.tsv
+  --m-sample-metadata-file /data/team7_captivevswild/zoo_metadata.tsv
 
 # taxonomy barplots
 qiime taxa barplot \
   --i-table zoo_filtered_table.qza \
   --i-taxonomy taxonomy.qza \
-  --m-metadata-file /data/team7_captivevswild/zoo_metadata_edited.tsv \
+  --m-metadata-file /data/team7_captivevswild/zoo_metadata.tsv \
   --o-visualization taxa_bar_plots.qzv
 
 # transferring taxa bar plot visualization file to local device
@@ -138,6 +140,10 @@ scp root@10.19.139.186:/data/team7_captivevswild/zoo_filtered_table.qzv .
 scp root@10.19.139.186:/data/team7_captivevswild/taxa_bar_plots.qzv .
 
 ## PHYLOGENETIC DIVERSITY ANALYSES ##
+
+# create a detached screen session
+screen -S zoo_phylo
+conda activate qiime2-2023.7
 
 # generating a tree for phylogenetic diversity analyses
 qiime phylogeny align-to-tree-mafft-fasttree \
@@ -152,18 +158,18 @@ qiime diversity alpha-rarefaction \
   --i-table zoo_filtered_table.qza \
   --i-phylogeny rooted-tree.qza \
   --p-max-depth 214000 \
-  --m-metadata-file /data/team7_captivevswild/zoo_metadata_edited.tsv \
+  --m-metadata-file /data/team7_captivevswild/zoo_metadata.tsv \
   --o-visualization alpha-rarefaction.qzv
 
 # transferring alpha rarefaction file to local device
-scp root@10.19.139.140:/data/team7_captivevswild/alpha-rarefaction.qzv .
+scp root@10.19.139.186:/data/team7_captivevswild/alpha-rarefaction.qzv .
 
 # calculating alpha- & beta-diversity metrics
 qiime diversity core-metrics-phylogenetic \
   --i-phylogeny rooted-tree.qza \
   --i-table zoo_filtered_table.qza \
   --p-sampling-depth [INSERT] \
-  --m-metadata-file /data/team7_captivevswild/zoo_metadata_edited.tsv \
+  --m-metadata-file /data/team7_captivevswild/zoo_metadata.tsv \
   --output-dir core-metrics-results
 
 ## EXPORTING OTU, TAXONOMY & ROOTED TREE FILES ##
