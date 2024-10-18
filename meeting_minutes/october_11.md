@@ -1,6 +1,6 @@
 # Meeting Minutes - October 11
 
-#INTRODUCTION SECTION
+# INTRODUCTION SECTION
 What is the knowledge gap?
 The paper’s rationale was that few studies have yet to address how changes in living environments can influence mammalian gut microbiome, and for the current studies, they target few species → so they studied effect of captivity on the mammalian gut microbiome → Is our rationale just expanding on that, and finding more associated variables?
 They didn’t do a functional analysis 
@@ -19,14 +19,14 @@ How does X, Y Z variable influence metabolic pathways in wild vs captive mammals
 Within wild animals, does X, Y Z variable influence metabolic pathways?
 Within captive animals, does X, Y Z variable influence metabolic pathways?
 
-#RESEARCH OBJECTIVES SECTION
-##confirm research question: can it be broad like… what variables are associated with changes in microbial diversity in the mammalian gut microbiome of wild vs captive mammals? 
+# RESEARCH OBJECTIVES SECTION
+## confirm research question: can it be broad like… what variables are associated with changes in microbial diversity in the mammalian gut microbiome of wild vs captive mammals? 
 Is this sufficient to explain why we’re including the variables already tested: checking if our pipeline produces the same results as the paper for host variables used
 
-##Do we go need to go through each of the metadata variables (table below)  selected and explain why we are including them?
+## Do we go need to go through each of the metadata variables (table below)  selected and explain why we are including them?
 hypotheses: would it be explaining “we hypothesize that variable X will be associated with changes in gut microbial diversity in captive vs wild animals” or would it be like “we expect variable X to be the most significant variable associated…”
 
-##Decide what metadata variables to use zoo_metadata.xlsx
+## Decide what metadata variables to use zoo_metadata.xlsx
 Should we use numerical variables (ie. body  mass) and change it into categorical?
 Metadata categories + rationale for keeping them (questions in red)
 Category
@@ -63,7 +63,7 @@ Gut fermentation
 They showed significant but we can reaffirm
 
 # EXPERIMENTAL AIMS SECTION
-##Are we missing anything else?
+## Are we missing anything else?
 Aim 1: Identify which variables are significantly associated with gut microbiome diversity differences in wild vs captive mammalians.
 Bray-curtis community dissimilarity between wild + captive
 Rationale: provide insight into which variables are associated with significant changes to the gut microbial community composition between wild and captive animals, which will allow us to further investigate the gut microbial dynamics in each variable (aim 2) and metabolic pathways affected (aim 3)
@@ -101,8 +101,8 @@ FWD:GTGYCAGCMGCCGCGGTAA; REV:GGACTACNVGGGTWTCTAAT
 * Original paper used Shannons (Alpha) & Bray-Curtis (Beta)
 
 
-#POSSIBLE APPROACH
-#”Sex Influences Gut Microbial Composition in Mice with Familial Dysautonomia but is not the Primary Determinant of Microbial Functional Diversity”:
+# POSSIBLE APPROACH
+## ”Sex Influences Gut Microbial Composition in Mice with Familial Dysautonomia but is not the Primary Determinant of Microbial Functional Diversity”:
 QIIME2 processing, DAD2 denoising and clustering, taxonomic classification of the ASV w/ SILVA (mod 6), filtered out chloroplast & mitochondria
 R tidyverse phyloseq object on result of (1), removed low ASV reads = unrarefied phyloseq file
 Created rarefied phyloseq file (changed rarefied sampling depth) on result of (2) = rarefied phyloseq file
