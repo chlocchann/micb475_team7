@@ -51,7 +51,7 @@ screen -S zoo_dada2
 conda activate qiime2-2023.7
 
 # determining ASVs with DADA2
-# based on qiime2 visualization of demux.qza, truncation length of 233bp was selected
+# based on qiime2 visualization of demux.qzv, truncation length of 233bp was selected
 qiime dada2 denoise-single \
   --i-demultiplexed-seqs demux_seqs.qza \
   --p-trim-left 0 \
