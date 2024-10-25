@@ -1,0 +1,22 @@
+qiime tools export \
+  --input-path ../moving_pictures_tutorial/table.qza \
+  --output-path table_export
+
+biom convert \
+-i feature-table.biom \
+--to-tsv \
+-o feature-table.txt
+
+
+--------
+
+qiime tools export \
+  --input-path ../moving_pictures_tutorial/taxonomy.qza \
+  --output-path taxonomy_export
+
+#comes out as .tsv
+--------
+
+qiime tools export \
+  --input-path ../moving_pictures_tutorial/rooted-tree.qza \
+  --output-path rooted_tree_expor
