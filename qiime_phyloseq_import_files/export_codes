@@ -1,3 +1,5 @@
+###ON SERVER
+
 qiime tools export \
   --input-path ../moving_pictures_tutorial/table.qza \
   --output-path table_export
@@ -20,3 +22,12 @@ qiime tools export \
 qiime tools export \
   --input-path ../moving_pictures_tutorial/rooted-tree.qza \
   --output-path rooted_tree_expor
+
+
+
+
+###ON LOCAL COMPUTER
+
+cd ~/Desktop/
+
+scp -r root@XXX:~/data/mpt_export .
