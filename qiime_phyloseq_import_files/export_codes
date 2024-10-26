@@ -1,7 +1,11 @@
 ###ON SERVER
 
+cd data
+cd ~/data/team7_captivevswild/
+
+
 qiime tools export \
-  --input-path ../moving_pictures_tutorial/table.qza \
+  --input-path ../team7_captivevswild/zoo_table.qza \
   --output-path table_export
 
 biom convert \
@@ -13,14 +17,14 @@ biom convert \
 --------
 
 qiime tools export \
-  --input-path ../moving_pictures_tutorial/taxonomy.qza \
+  --input-path ../team7_captivevswild/taxonomy.qza \
   --output-path taxonomy_export
 
 #comes out as .tsv
 --------
 
 qiime tools export \
-  --input-path ../moving_pictures_tutorial/rooted-tree.qza \
+  --input-path ../team7_captivevswild/rooted-tree.qza \
   --output-path rooted_tree_expor
 
 
