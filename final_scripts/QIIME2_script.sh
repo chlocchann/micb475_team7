@@ -172,17 +172,20 @@ qiime diversity core-metrics-phylogenetic \
   --m-metadata-file /data/team7_captivevswild/zoo_metadata.tsv \
   --output-dir core-metrics-results
 
-## EXPORTING OTU, TAXONOMY & ROOTED TREE FILES ##
+## EXPORTING OTU, TAXONOMY, ROOTED TREE, & METADATA FILES ##
 
 # creating directory for export
 mkdir team7_exports
 
 # OTU table export
 qiime tools export \
-  --input-path /data/team7_captivevswild/table.qza \
-  --output-path /data/team7_captivevswild/team7_exports
+  --input-path /data/team7_captivevswild/zoo_table.qza \
+  --output-path /data/team7_captivevswild/team7_exports \
 
-biom convert -i feature-table.biom --to-tsv -o feature-table.txt
+biom convert \
+  -i /data/team7_captivevswild/team7_exports/feature-table.biom \
+  --to-tsv \
+  -o /data/team7_captivevswild/team7_exports/feature-table.txt
 
 # taxonomy export
 qiime tools export \
@@ -194,5 +197,8 @@ qiime tools export \
   --input-path /data/team7_captivevswild/rooted-tree.qza \
   --output-path /data/team7_captivevswild/team7_exports
 
-# transferring otu, taxonomy & rooted tree files to local device
-scp root@10.19.139.186:/data/team7_captivevswild/team7_exports .
+# metadata export (copy to export folder)
+cp /data/team7_captivevswild/zoo_metadata.tsv /data/team7_captivevswild/team7_exports
+
+# transferring otu, taxonomy, rooted tree, metadata files to local device
+scp -r root@10.19.139.186:/data/team7_captivevswild/team7_exports .
