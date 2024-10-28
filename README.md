@@ -6,10 +6,15 @@ This GitHub repository contains code and data related to our project focusing on
 
 ## Lab Notebook
 [QIIME2 Pipeline](lab_notebook/qiime2_analysis_pipeline.md)
+[DESEq2 Pipeline](lab_notebook/DESEq2_analysis_pipeline.md)
+[ISA Pipeline](lab_notebook/ISA_analysis_pipeline.md)
+[PICRUSt2 Pipeline](lab_notebook/PICRUSt2_analysis_pipeline.md)
 
 ## Finalized Code
 ### QIIME2
 [QIIME2](final_scripts/QIIME2_script.sh)
   
 ### R Studio
-* [Title of Content 5](#Title-5)
+* [DESEq2](final_scripts/DESEq2_script.R)
+* [ISA](final_scripts/ISA_script.R)
+* [PICRUSt2](final_scripts/PICRUSt2_script.R)
