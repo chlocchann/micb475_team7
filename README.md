@@ -12,7 +12,7 @@ This GitHub repository contains code and data related to our project focusing on
 
 ## Finalized Code
 ### QIIME2
-[QIIME2](final_scripts/QIIME2_script.sh)
+* [QIIME2](final_scripts/QIIME2_script.sh)
   
 ### R Studio
 * [DESEq2](final_scripts/DESEq2_script.R)
