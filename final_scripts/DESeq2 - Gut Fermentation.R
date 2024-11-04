@@ -62,7 +62,7 @@ foregut_DESeq_plot <- ggplot(foregut_sigASVs) +
 foregut_DESeq_plot
 
 # Export the phylum plot
-ggsave(filename = "DESeq_phylum_plot_foregut.png", foregut_DESeq_plot,
+ggsave(filename = "DESeq_phylum_plot_foregut_10000.png", foregut_DESeq_plot,
        height = 5, width = 7)
 
 
@@ -115,7 +115,7 @@ hindgut_DESeq_plot <- ggplot(hindgut_sigASVs) +
 hindgut_DESeq_plot
 
 # Export the phylum plot
-ggsave(filename = "DESeq_phylum_plot_hindgut_Jang.png",hindgut_DESeq_plot,
+ggsave(filename = "DESeq_phylum_plot_hindgut_10000.png",hindgut_DESeq_plot,
        height = 5, width = 7)
 
 
@@ -168,7 +168,7 @@ nonfermentor_DESeq_plot <- ggplot(nonfermentor_sigASVs) +
 nonfermentor_DESeq_plot
 
 # Export the phylum plot
-ggsave(filename = "DESeq_phylum_plot_nonfermentor_Jang.png", nonfermentor_DESeq_plot,
+ggsave(filename = "DESeq_phylum_plot_nonfermentor_10000.png", nonfermentor_DESeq_plot,
        height = 5, width = 7)
 
 
