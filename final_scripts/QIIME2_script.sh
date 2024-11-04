@@ -123,13 +123,19 @@ qiime taxa filter-table \
   --p-exclude mitochondria,chloroplast \
   --o-filtered-table zoo_filtered_table.qza
 
-qiime feature-table summarize \
+# filtering out features with 5 or lower counts
+qiime feature-table filter-features \
   --i-table zoo_filtered_table.qza \
-  --o-visualization zoo_filtered_table.qzv \
+  --p-min-frequency 5 \
+  --o-filtered-table zoo_frequency_filtered_table.qza
+
+qiime feature-table summarize \
+  --i-table zoo_frequency_filtered_table.qza \
+  --o-visualization zoo_frequency_filtered_table.qzv \
   --m-sample-metadata-file /data/team7_captivevswild/zoo_metadata.tsv
 
 # transferring filtered table visualization files to local device
-scp root@10.19.139.186:/data/team7_captivevswild/zoo_filtered_table.qzv .
+scp root@10.19.139.186:/data/team7_captivevswild/zoo_frequency_filtered_table.qzv .
 
 ## PHYLOGENETIC DIVERSITY ANALYSES ##
 
@@ -164,7 +170,23 @@ qiime diversity core-metrics-phylogenetic \
   --m-metadata-file /data/team7_captivevswild/zoo_metadata.tsv \
   --output-dir core-metrics-results
 
-## EXPORTING OTU, TAXONOMY & ROOTED TREE FILES ##
+## PICRUSt2 ANALYSIS ##
+
+# create a detached screen session
+screen -S zoo_picrust
+conda activate qiime2-2023.7
+
+# running the picrust2 qiime2 plugin
+qiime picrust2 full-pipeline \
+  --i-table zoo_frequency_filtered_table.qza \
+  --i-seq rep_seqs.qza \
+  --output-dir picrust2_output \
+  --p-placement-tool sepp \
+  --p-hsp-method pic \
+  --p-max-nsti 2 \
+  --verbose
+
+## EXPORTING OTU, TAXONOMY, ROOTED TREE & PICRUSt2 PATHWAY FILES ##
 
 # creating directory for export
 mkdir team7_exports
@@ -185,6 +207,16 @@ qiime tools export \
 qiime tools export \
   --input-path /data/team7_captivevswild/rooted-tree.qza \
   --output-path /data/team7_captivevswild/team7_exports
+
+# picrust2 pathway export
+qiime tools export \
+  --input-path picrust2_output/pathway_abundance.qza \
+  --output-path /data/team7_captivevswild/team7_exports
+
+biom convert \
+   -i /data/team7_captivevswild/team7_exports/feature-table.biom \
+   -o /data/team7_captivevswild/team7_exports/pathway_abundance.tsv \
+   --to-tsv
 
 # transferring otu, taxonomy & rooted tree files to local device
 scp root@10.19.139.186:/data/team7_captivevswild/team7_exports .
