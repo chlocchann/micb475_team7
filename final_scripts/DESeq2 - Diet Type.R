@@ -251,7 +251,7 @@ write.csv(combined_results_herbivores, "positive_ASV_herbivores.csv", row.names 
 
 ############# -----------------------------------------------------------
 
-############# C) OMNIVORES
+############# B) OMNIVORES
 posit_omnivores_ASVs <- omnivores_sigASVs %>%
   filter(log2FoldChange > 0) %>%
   pull(ASV)
