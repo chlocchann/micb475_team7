@@ -211,12 +211,9 @@ qiime tools export \
 # picrust2 pathway export
 qiime tools export \
   --input-path picrust2_output/pathway_abundance.qza \
-  --output-path /data/team7_captivevswild/team7_exports
+  --output-path /data/team7_captivevswild/team7_exports/picrust2_output
 
-biom convert \
-   -i /data/team7_captivevswild/team7_exports/feature-table.biom \
-   -o /data/team7_captivevswild/team7_exports/pathway_abundance.tsv \
-   --to-tsv
+biom convert -i feature-table.biom --to-tsv -o pathway_abundance.tsv
 
 # transferring otu, taxonomy & rooted tree files to local device
 scp root@10.19.139.186:/data/team7_captivevswild/team7_exports .
