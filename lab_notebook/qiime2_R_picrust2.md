@@ -12,6 +12,6 @@
 * Tested code from "picrust_analysis.R" taught in lecture (up until # generate pathway PCA plot)
   * Edited pipeline such that only one variable comparing captive vs wild status was being compared for each comparison group
   * Only 8 samples remained for omnivore group after filtering -> 6 captive, 2 wild
-   * ERROR: heatmap only shows captive omnivores because 2 wild samples are filtered out (likely during p-value filtering)
-  * Got error for PCA pathway plots for omnivore & herbivore: Error in prcomp.default(t(abundance), center = TRUE, scale = TRUE :cannot rescale a constant/zero column to unit variance
-   * Troubleshooting suggests that there is no variance between captive and wild samples for both of the above
+    * ERROR: heatmap only shows captive omnivores because 2 wild samples are filtered out (likely during p-value filtering)
+  * ERROR: PCA pathway plots for omnivore & herbivore: Error in prcomp.default(t(abundance), center = TRUE, scale = TRUE :cannot rescale a constant/zero column to unit variance
+    * Troubleshooting suggests that there is no variance between captive and wild samples for both of the above
