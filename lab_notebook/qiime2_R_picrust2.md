@@ -15,3 +15,5 @@
     * ERROR: heatmap only shows captive omnivores despite indicating that wild samples are shown ?
   * ERROR: PCA pathway plots for omnivore & herbivore: Error in prcomp.default(t(abundance), center = TRUE, scale = TRUE :cannot rescale a constant/zero column to unit variance
     * Troubleshooting suggests that there is no variance between captive and wild samples for both of the above
+  * ERROR: PCA pathway plots for hindgut and foregut fermenters: Error in prcomp.default(t(abundance), center = TRUE, scale = TRUE :cannot rescale a constant/zero column to unit variance
+    * Troubleshooting suggests that there is no variance between captive and wild samples for both of the above
