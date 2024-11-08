@@ -42,4 +42,4 @@
   * ERROR: for omnivore, only 2 wild omnivore samples -> heatmap only reflects captive omnivores despite output stating that wild samples are depicted?
   * ERROR: for omnivores, herbivores, hindgut fermenters, foregut fermenters, no variance detected between captive & wild samples? 
   * STILL TO DO: volcano plots & DESEq2 portion of pathway
-  * (/lab_notebook/qiime2_R_picrust2.md)
+  * [QIIME/R PICRUSt2 lab notebook](/lab_notebook/qiime2_R_picrust2.md)
