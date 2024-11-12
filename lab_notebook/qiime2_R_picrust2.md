@@ -17,3 +17,12 @@
     * Troubleshooting suggests that there is no variance between captive and wild samples for both of the above
   * ERROR: PCA pathway plots for hindgut and foregut fermenters: Error in prcomp.default(t(abundance), center = TRUE, scale = TRUE :cannot rescale a constant/zero column to unit variance
     * Troubleshooting suggests that there is no variance between captive and wild samples for both of the above
+
+### November 11, 2024 [CHLOE]
+* Tested code from "picrust_analysis.R" taught in lecture (completed with DESEq2 function & top upregulated & downregulated pathways)
+  * Edited provided DESEq2 function such that "subject" was replaced with "#OTU ID"
+  * Some comparisons had less than 10 upregulated/downregulated, or only downregulated pathways
+  * For comparisons that had more than 10 upregulated/downregulated, filtered to only show top 10 most up/downregulated
+* Browsed online for assistance in creating volcano plots, colour-coated according to log2foldchange greater than 2, or less than -2 [link](https://biocorecrg.github.io/CRG_RIntroduction/volcano-plots.html)
+ * Wrote script for volcano plots and adapted for current purposes
+* Wrote script to download all graphs/plots created throughout code 
