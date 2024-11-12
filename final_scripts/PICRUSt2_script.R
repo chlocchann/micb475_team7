@@ -711,7 +711,7 @@ ggsave("OMNIVORE_VOLCANO.PNG"
 # saving heatmap
 ggsave("HERBIVORE_HEATMAP.PNG"
        , HERBIVORE_HEATMAP
-       , height=6, width =12)
+       , height=6, width =24)
 # no pca plot to save due to lack of variance between captive vs. wild samples
 # saving top 10 upregulated & downregulated pathways
 ggsave("HERBIVORE_LOG2FC.PNG"
