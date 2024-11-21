@@ -11,4 +11,13 @@
 ### NOV 20, 2024 [Christine]
 - tried creating a table that includes all of the taxonomic levels, but looked overly confusing (species column included NAs which made it more confusing)
 - just kept the original table for each fermentation type 
-
+- realized captive/wild wasn't added to gut fermentation ISA and diet types (herbivore / carnivore) wasn't completed
+  - clustered GutFermentersHMC and captive_wild variable
+  - performed ISA using the clustered variables to achieve the fermentation type along with whether if its captive / wild
+  - created tables for each fermentation type + each captive/wild variable
+    - combined the tables for fermentation type (eg. hindgut) with the results for both captive and wild variable (eg. made one big table for hindgut captive and wild)
+- for the diet types ISA
+  - followed the same steps as above with clustering OchHMC and captive_wild, used the same code with a few variable modifications
+  - performed ISA using the clustered variables
+  - created respective tables for each variable (eg. wild_carnivore, wild_herbivore, etc..) and combined tables for the wild group and the captive group
+ - going to double check with TA to check if combining tables is okay
