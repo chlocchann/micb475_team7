@@ -13,34 +13,28 @@
 - Rearranged Jang et al. (added "mutate(Phylum_Clean = gsub("p__|\\..*", "", Phylum)) %>%” so can better group), result also 5 groups like Leon et. al by log fold change is /10 in Jang et al.’s case
 - After resolving this problem, tried looking at non-fermentor and found Proteobacteria to have quite a large span by individual points, likely reason why span ositive and negative values in Leon et al.. Also note, non-fermentor only had 5 groups instead of 6.
 
-
-### Oct 29th, 2024 - [Wendy]
+### Oct 29th, 2024 - [WENDY]
 - Notice how there are two “positive” groups in Carnivores & Non-fermenter’s Proteobacteria group
 - Set up code to extract the ASV identification on R 
 - Identified to be the same ASV: "53d42797b8ac1fa460a02c8a2904581e", "f50defe8cf4a491bc5377919cec7e331"
 - Set up code to extract the taxonomic information regarding these samples contributing to these ASV
 - (Please see meeting minutes or R code for information)
 
-
-
-### Oct 30th, 2024 -[Wendy]
+### Oct 30th, 2024 - [WENDY]
 - Tried attempting with Ancom, which is more optimal as it has less false positives than DESeq.
 - Really struggled with Ancom since we are working with 2+ variables (captivity, diet type/gut fermentation type) and Ancom seems to work mostly with one variable.
 - It also took a lot time to run the function (around 20-30 minutes) and the output often returns errors. Will ask TA/group about pursuing with with ANCOM or not.
 - DESeq is mostly complete, though concerns may raise about closing 1000 as sample depth form rarefied phyloseq object. Having too many samples also render the data unconclusive (we have 80 000+ samples). Will ask TA/group about sample size.
 
-
-
-### Nov 1st, 2024 - [Wendy]
+### Nov 1st, 2024 - [WENDY]
 - Decided to continue with DESeq instead and update sample size to 10000 samples. 
 - Ended up with many more positive ASVs, though most are still negative.
 
-### Nov 4th, 2023 - [Wendy]
+### Nov 4th, 2023 - [WENDY]
 - Decided to blast the previous 2 positive ASVs (from sample size=1000) since there was confusion about sample genus of “Shigella-E. coli”. Confirmed to be E. Coli
 - Generated information regarding all the positive ASV (from sample size=10000), and analyzed using excel organizing. Excel also contains taxonomic information of each ASV. Found not many overlaps in ASV between samples. 
 
-
-### Nov 12th, 2023 - [Wendy]
+### Nov 12th, 2023 - [WENDY]
 - The original sample graphs (each phylum composes of different data points representing ASV and bar graphs representing variability in samples under the ASV) may look confusing and disorganized.
 - Did not want to do bar graphs because will lose insight into the prevalence of positive/negative valued ASVs (eg. If there are only 1 ASV at value 5, but 100 at value -5, will have a span of -5 to 5 when in reality, most samples are negative)
 - Maybe will try violin plots instead, gives the both the benefit of looking at abundance distribution and simplifying representation
