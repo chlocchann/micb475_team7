@@ -29,7 +29,7 @@ library(DESeq2)
 library(ggh4x)
 library(dplyr)
 library(ggrepel)
-
+?ggpicrust2
 #### Load Data ####
 # importing PICRUSt2 pathway
 abundance_file <- "pathway_abundance.tsv"
@@ -690,7 +690,7 @@ ggsave("CARNIVORE_LOG2FC.PNG"
 # saving volcano plot
 ggsave("CARNIVORE_VOLCANO.PNG"
        , CARNIVORE_VOLCANO
-       , height=6, width =12)
+       , height=4, width =8)
 
 ## DIET - OMNIVORE ## 
 # saving heatmap
@@ -705,22 +705,22 @@ ggsave("OMNIVORE_LOG2FC.PNG"
 # saving volcano plot
 ggsave("OMNIVORE_VOLCANO.PNG"
        , OMNIVORE_VOLCANO
-       , height=6, width =12)
+       , height=4, width =8)
 
 ## DIET - HERBIVORE ## 
 # saving heatmap
 ggsave("HERBIVORE_HEATMAP.PNG"
        , HERBIVORE_HEATMAP
-       , height=6, width =24)
+       , height=6, width =22)
 # no pca plot to save due to lack of variance between captive vs. wild samples
 # saving top 10 upregulated & downregulated pathways
 ggsave("HERBIVORE_LOG2FC.PNG"
        , HERBIVORE_LOG2FC
-       , height=6, width =12)
+       , height=2, width =12)
 # saving volcano plot
 ggsave("HERBIVORE_VOLCANO.PNG"
        , HERBIVORE_VOLCANO
-       , height=6, width =12)
+       , height=4, width =8)
 
 ## GUT FERMENTATION - NON-FERMENTER ## 
 ggsave("NON_FERMENTER_HEATMAP.PNG"
@@ -733,11 +733,11 @@ ggsave("NON_FERMENTER_PCA.PNG"
 # saving top 10 upregulated & downregulated pathways
 ggsave("NON_FERMENTER_LOG2FC.PNG"
        , NON_FERMENTER_LOG2FC
-       , height=6, width =12)
+       , height=4, width =8)
 # saving volcano plot
 ggsave("NON_FERMENTER_VOLCANO.PNG"
        , NON_FERMENTER_VOLCANO
-       , height=6, width =12)
+       , height=4, width =8)
 
 ## GUT FERMENTATION - HINDGUT ## 
 # saving heatmap
@@ -748,11 +748,11 @@ ggsave("HINDGUT_HEATMAP.PNG"
 # saving top 10 upregulated & downregulated pathways
 ggsave("HINDGUT_LOG2FC.PNG"
        , HINDGUT_LOG2FC
-       , height=6, width =12)
+       , height=5, width =8)
 # saving volcano plot
 ggsave("HINDGUT_VOLCANO.PNG"
        , HINDGUT_VOLCANO
-       , height=6, width =12)
+       , height=4, width =8)
 
 ## GUT FERMENTATION - FOREGUT ## 
 # saving heatmap
@@ -763,8 +763,8 @@ ggsave("FOREGUT_HEATMAP.PNG"
 # saving top 10 upregulated & downregulated pathways
 ggsave("FOREGUT_LOG2FC.PNG"
        , FOREGUT_LOG2FC
-       , height=6, width =12)
+       , height=1.75, width =8)
 # saving volcano plot
 ggsave("FOREGUT_VOLCANO.PNG"
        , FOREGUT_VOLCANO
-       , height=6, width =12)
+       , height=4, width =8)
