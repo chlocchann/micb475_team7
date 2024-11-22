@@ -387,15 +387,30 @@ carnivore_sig_res = carnivore_res_desc %>%
   filter(abs(log2FoldChange) > 1.5) 
 carnivore_sig_res <- carnivore_sig_res[order(carnivore_sig_res$log2FoldChange),]
 
-# NOTE: only downregulated pathways found, so filtered for top 10 downregulated pathways
-# sorting based on absolute log2FC for top 10 downregulated pathways 
-bottom_10_carnivore <- carnivore_sig_res %>%
-  filter(log2FoldChange < 0) %>%
-  arrange(abs(log2FoldChange)) %>%
+# sorting based on absolute log2FC for top upregulated pathways
+top_10_carnivore <- carnivore_sig_res %>%
+  filter(log2FoldChange > 0) %>%
+  arrange(desc(abs(log2FoldChange))) %>%
   head(10)
 
+top_10_carnivore <- top_10_carnivore %>%
+  mutate(group = "Top Upregulated")
+
+# sorting based on absolute log2FC for top downregulated pathways 
+bottom_10_carnivore <- carnivore_sig_res %>%
+  filter(log2FoldChange < 0) %>%
+  arrange(desc(abs(log2FoldChange))) %>%
+  head(10)
+
+bottom_10_carnivore <- bottom_10_carnivore %>%
+  mutate(group = "Bottom Downregulated")
+
+# combining the top and bottom 10 pathways to plot
+sig20_carnivore <- bind_rows(top_10_carnivore, bottom_10_carnivore) %>%
+  arrange(abs(log2FoldChange))
+
 # generating a plot of top 10 downregulated pathways
-CARNIVORE_LOG2FC <- ggplot(data = bottom_10_carnivore, aes(y = reorder(description, log2FoldChange), x = log2FoldChange, fill = pvalue)) +
+CARNIVORE_LOG2FC <- ggplot(data = sig20_carnivore, aes(y = reorder(description, log2FoldChange), x = log2FoldChange, fill = pvalue)) +
   geom_bar(stat = "identity")+ 
   theme_bw()+
   labs(x = "Log2FoldChange", y="Pathways")
@@ -434,15 +449,30 @@ omnivore_sig_res = omnivore_res_desc %>%
   filter(abs(log2FoldChange) > 1.5) 
 omnivore_sig_res <- omnivore_sig_res[order(omnivore_sig_res$log2FoldChange),]
 
-# NOTE: only downregulated pathways found, so filtered for top 10 downregulated pathways
-# sorting based on absolute log2FC for bottom 10 pathways 
-bottom_10_omnivore <- omnivore_sig_res %>%
-  filter(log2FoldChange < 0) %>%
-  arrange(abs(log2FoldChange)) %>%
+# sorting based on absolute log2FC for top upregulated pathways
+top_10_omnivore <- omnivore_sig_res %>%
+  filter(log2FoldChange > 0) %>%
+  arrange(desc(abs(log2FoldChange))) %>%
   head(10)
 
+top_10_omnivore <- top_10_omnivore %>%
+  mutate(group = "Top Upregulated")
+
+# sorting based on absolute log2FC for top downregulated pathways 
+bottom_10_omnivore <- omnivore_sig_res %>%
+  filter(log2FoldChange < 0) %>%
+  arrange(desc(abs(log2FoldChange))) %>%
+  head(10)
+
+bottom_10_omnivore <- bottom_10_omnivore %>%
+  mutate(group = "Bottom Downregulated")
+
+# combining the top and bottom 10 pathways to plot
+sig20_omnivore <- bind_rows(top_10_omnivore, bottom_10_omnivore) %>%
+  arrange(abs(log2FoldChange))
+
 # generating a plot of top 10 downregulated pathways
-OMNIVORE_LOG2FC <- ggplot(data = bottom_10_omnivore, aes(y = reorder(description, log2FoldChange), x = log2FoldChange, fill = pvalue)) +
+OMNIVORE_LOG2FC <- ggplot(data = sig20_omnivore, aes(y = reorder(description, log2FoldChange), x = log2FoldChange, fill = pvalue)) +
   geom_bar(stat = "identity")+ 
   theme_bw()+
   labs(x = "Log2FoldChange", y="Pathways")
@@ -481,9 +511,30 @@ herbivore_sig_res = herbivore_res_desc %>%
   filter(abs(log2FoldChange) > 1.5) 
 herbivore_sig_res <- herbivore_sig_res[order(herbivore_sig_res$log2FoldChange),]
 
-# NOTE: only 3 pathways were up/downregulated so no further filtering was performed
+# sorting based on absolute log2FC for top upregulated pathways
+top_10_herbivore <- herbivore_sig_res %>%
+  filter(log2FoldChange > 0) %>%
+  arrange(desc(abs(log2FoldChange))) %>%
+  head(10)
+
+top_10_herbivore <- top_10_herbivore %>%
+  mutate(group = "Top Upregulated")
+
+# sorting based on absolute log2FC for top downregulated pathways 
+bottom_10_herbivore <- herbivore_sig_res %>%
+  filter(log2FoldChange < 0) %>%
+  arrange(desc(abs(log2FoldChange))) %>%
+  head(10)
+
+bottom_10_herbivore <- bottom_10_herbivore %>%
+  mutate(group = "Bottom Downregulated")
+
+# combining the top and bottom 10 pathways to plot
+sig20_herbivore <- bind_rows(top_10_herbivore, bottom_10_herbivore) %>%
+  arrange(abs(log2FoldChange))
+
 # generating a plot of top upregulated & downregulated genes
-HERBIVORE_LOG2FC <- ggplot(data = herbivore_sig_res, aes(y = reorder(description, log2FoldChange), x = log2FoldChange, fill = pvalue)) +
+HERBIVORE_LOG2FC <- ggplot(data = sig20_herbivore, aes(y = reorder(description, log2FoldChange), x = log2FoldChange, fill = pvalue)) +
   geom_bar(stat = "identity")+ 
   theme_bw()+
   labs(x = "Log2FoldChange", y="Pathways")
@@ -534,7 +585,7 @@ top_10_nonferment <- top_10_nonferment %>%
 # sorting based on absolute log2FC for top downregulated pathways 
 bottom_10_nonferment <- nonferment_sig_res %>%
   filter(log2FoldChange < 0) %>%
-  arrange(abs(log2FoldChange)) %>%
+  arrange(desc(abs(log2FoldChange))) %>%
   head(10)
 
 bottom_10_nonferment <- bottom_10_nonferment %>%
@@ -596,7 +647,7 @@ top_10_hindgut <- top_10_hindgut %>%
 # sorting based on absolute log2FC for bottom 10 pathways 
 bottom_10_hindgut <- hindgut_sig_res %>%
   filter(log2FoldChange < 0) %>%
-  arrange(abs(log2FoldChange)) %>%
+  arrange(desc(abs(log2FoldChange))) %>%
   head(10)
 
 bottom_10_hindgut <- bottom_10_hindgut %>%
@@ -645,9 +696,30 @@ foregut_sig_res = foregut_res_desc %>%
   filter(abs(log2FoldChange) > 1.5) 
 foregut_sig_res <- foregut_sig_res[order(foregut_sig_res$log2FoldChange),]
 
-# NOTE: only 3 downregulated pathways were identified so no further filtering was performed
+# sorting based on absolute log2FC for top upregulated pathways
+top_10_foregut <- foregut_sig_res %>%
+  filter(log2FoldChange > 0) %>%
+  arrange(desc(abs(log2FoldChange))) %>%
+  head(10)
+
+top_10_foregut <- top_10_foregut %>%
+  mutate(group = "Top Upregulated")
+
+# sorting based on absolute log2FC for top downregulated pathways 
+bottom_10_foregut <- foregut_sig_res %>%
+  filter(log2FoldChange < 0) %>%
+  arrange(desc(abs(log2FoldChange))) %>%
+  head(10)
+
+bottom_10_foregut <- bottom_10_foregut %>%
+  mutate(group = "Bottom Downregulated")
+
+# combining the top and bottom 10 pathways to plot
+sig20_foregut <- bind_rows(top_10_foregut, bottom_10_foregut) %>%
+  arrange(desc(abs(log2FoldChange)))
+
 # generating a plot of top downregulated pathways
-FOREGUT_LOG2FC <- ggplot(data = foregut_sig_res, aes(y = reorder(description, sort(as.numeric(log2FoldChange))), x= log2FoldChange, fill = pvalue))+
+FOREGUT_LOG2FC <- ggplot(data = sig20_foregut, aes(y = reorder(description, sort(as.numeric(log2FoldChange))), x= log2FoldChange, fill = pvalue))+
   geom_bar(stat = "identity")+ 
   theme_bw()+
   labs(x = "Log2FoldChange", y="Pathways")
