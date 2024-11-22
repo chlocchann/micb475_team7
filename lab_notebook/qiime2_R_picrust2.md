@@ -1,6 +1,6 @@
 ### November 4, 2024 [CHLOE]
 * Added PICRUSt2 pipeline to existing R script
-* Ran PICRUSt2 pipeline and transferred files to local device
+* Ran PICRUSt2 pipeline in QIIME2 and transferred files to local device
 * Edited "pathway_abundance.tsv" such that first row contained #OTU IDs
 * Uploaded to RStudio alongside metadata file
 * Adapted code from "picrust_analysis.R" taught in lecture (up until # generate pathway PCA plot)
@@ -8,7 +8,7 @@
   * Current code takes in one metadata column where 2 variables are compared -> must compile captivity status and metadata columns of interest into one column? 
 
 ### November 5, 2024 [CHLOE]
-* Appended " - CAPTIVE" and " - WILD" to diet type (OchHMC) and gut fermentation type (GutFermentersHMC)
+* Appended " - CAPTIVE" and " - WILD" to diet type (OchHMC) and gut fermentation type (GutFermentersHMC) using Excel -> to create R code later
 * Tested code from "picrust_analysis.R" taught in lecture (up until # generate pathway PCA plot)
   * Edited pipeline such that only one variable comparing captive vs wild status was being compared for each comparison group
   * Only 8 samples remained for omnivore group after filtering -> 6 captive, 2 wild
@@ -26,3 +26,8 @@
 * Browsed online for assistance in creating volcano plots, colour-coated according to log2foldchange greater than 2, or less than -2 [link](https://biocorecrg.github.io/CRG_RIntroduction/volcano-plots.html)
  * Wrote script for volcano plots and adapted for current purposes
 * Wrote script to download all graphs/plots created throughout code 
+
+### November 21, 2024 [CHLOE]
+* Used dplyr and base packages to write metadata pre-processing code in R
+  * Adjusts instances of "/" to "_" in column names
+  * Appends " - CAPTIVE" and " - WILD" depending on captive_wild status onto both OchHMC and GutFermentersHMC columns
