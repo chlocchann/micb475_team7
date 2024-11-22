@@ -29,7 +29,7 @@ library(DESeq2)
 library(ggh4x)
 library(dplyr)
 library(ggrepel)
-?ggpicrust2
+
 #### Load Data ####
 # importing PICRUSt2 pathway
 abundance_file <- "pathway_abundance.tsv"
@@ -269,7 +269,7 @@ herbivore_abundance_desc$feature = herbivore_abundance_desc$description
 herbivore_abundance_desc = herbivore_abundance_desc[,-c(63:ncol(herbivore_abundance_desc))] 
 
 # generate a heatmap
-HERBIVORE_HEATMAP <- pathway_heatmap(abundance = sig_abun_carnivore %>% column_to_rownames("feature"), metadata = metadata_diet_herbivore, group = "OchHMC")
+HERBIVORE_HEATMAP <- pathway_heatmap(abundance = herbivore_abundance_desc %>% column_to_rownames("feature"), metadata = metadata_diet_herbivore, group = "OchHMC")
 
 # generate pathway PCA plot
 HERBIVORE_PCA <- pathway_pca(abundance = abundance_data_herbivore %>% column_to_rownames("#OTU ID"), metadata = metadata_diet_herbivore, group = "OchHMC")
@@ -384,7 +384,7 @@ carnivore_res_desc = carnivore_res_desc[, -c(8:13)]
 # filter to only include significant pathways based on p-value & log2foldchange
 carnivore_sig_res = carnivore_res_desc %>%
   filter(pvalue < 0.05) %>%
-  filter(abs(log2FoldChange) > 2) 
+  filter(abs(log2FoldChange) > 1.5) 
 carnivore_sig_res <- carnivore_sig_res[order(carnivore_sig_res$log2FoldChange),]
 
 # NOTE: only downregulated pathways found, so filtered for top 10 downregulated pathways
@@ -403,8 +403,8 @@ CARNIVORE_LOG2FC <- ggplot(data = bottom_10_carnivore, aes(y = reorder(descripti
 # creating an additional column to indicate which pathways are upregulated/downregulated/insignificant
 carnivore_res_desc <- carnivore_res_desc %>%
   mutate(regulation = case_when(
-    pvalue < 0.05 & log2FoldChange > 2  ~ "Upregulated",
-    pvalue < 0.05 & log2FoldChange < -2 ~ "Downregulated",
+    pvalue < 0.05 & log2FoldChange > 1.5  ~ "Upregulated",
+    pvalue < 0.05 & log2FoldChange < -1.5 ~ "Downregulated",
     TRUE ~ "Insignificant"))
 
 # generating a volcano plot showing significant upregulated/downregulated pathways
@@ -415,7 +415,7 @@ CARNIVORE_VOLCANO <- ggplot(carnivore_res_desc, aes(x = log2FoldChange, y = -log
        color = "Regulatory Status") +  
   theme_minimal() +
   theme(legend.position = "right") +  
-  geom_vline(xintercept = c(-2, 2), linetype = "solid", color = "black") + 
+  geom_vline(xintercept = c(-1.5, 1.5), linetype = "solid", color = "black") + 
   geom_hline(yintercept = -log10(0.05), linetype = "solid", color = "black") +   
   scale_color_manual(values = c("Upregulated" = "indianred",  
                                 "Downregulated" = "skyblue",  
@@ -431,7 +431,7 @@ omnivore_res_desc = omnivore_res_desc[, -c(8:13)]
 # filter to only include significant pathways based on p-value & log2foldchange
 omnivore_sig_res = omnivore_res_desc %>%
   filter(pvalue < 0.05) %>%
-  filter(abs(log2FoldChange) > 2) 
+  filter(abs(log2FoldChange) > 1.5) 
 omnivore_sig_res <- omnivore_sig_res[order(omnivore_sig_res$log2FoldChange),]
 
 # NOTE: only downregulated pathways found, so filtered for top 10 downregulated pathways
@@ -450,8 +450,8 @@ OMNIVORE_LOG2FC <- ggplot(data = bottom_10_omnivore, aes(y = reorder(description
 # creating an additional column to indicate which pathways are upregulated/downregulated/insignificant
 omnivore_res_desc <- omnivore_res_desc %>%
   mutate(regulation = case_when(
-    pvalue < 0.05 & log2FoldChange > 2  ~ "Upregulated",
-    pvalue < 0.05 & log2FoldChange < -2 ~ "Downregulated",
+    pvalue < 0.05 & log2FoldChange > 1.5  ~ "Upregulated",
+    pvalue < 0.05 & log2FoldChange < -1.5 ~ "Downregulated",
     TRUE ~ "Insignificant"))
 
 # generating a volcano plot showing significant upregulated/downregulated pathways
@@ -462,7 +462,7 @@ OMNIVORE_VOLCANO <- ggplot(omnivore_res_desc, aes(x = log2FoldChange, y = -log10
        color = "Regulatory Status") +  
   theme_minimal() +
   theme(legend.position = "right") +  
-  geom_vline(xintercept = c(-2, 2), linetype = "solid", color = "black") + 
+  geom_vline(xintercept = c(-1.5, 1.5), linetype = "solid", color = "black") + 
   geom_hline(yintercept = -log10(0.05), linetype = "solid", color = "black") +   
   scale_color_manual(values = c("Upregulated" = "indianred",  
                                 "Downregulated" = "skyblue",  
@@ -478,7 +478,7 @@ herbivore_res_desc = herbivore_res_desc[, -c(8:13)]
 # filter to only include significant pathways based on p-value & log2foldchange
 herbivore_sig_res = herbivore_res_desc %>%
   filter(pvalue < 0.05) %>%
-  filter(abs(log2FoldChange) > 2) 
+  filter(abs(log2FoldChange) > 1.5) 
 herbivore_sig_res <- herbivore_sig_res[order(herbivore_sig_res$log2FoldChange),]
 
 # NOTE: only 3 pathways were up/downregulated so no further filtering was performed
@@ -491,8 +491,8 @@ HERBIVORE_LOG2FC <- ggplot(data = herbivore_sig_res, aes(y = reorder(description
 # creating an additional column to indicate which pathways are upregulated/downregulated/insignificant
 herbivore_res_desc <- herbivore_res_desc %>%
   mutate(regulation = case_when(
-    pvalue < 0.05 & log2FoldChange > 2  ~ "Upregulated",
-    pvalue < 0.05 & log2FoldChange < -2 ~ "Downregulated",
+    pvalue < 0.05 & log2FoldChange > 1.5  ~ "Upregulated",
+    pvalue < 0.05 & log2FoldChange < -1.5 ~ "Downregulated",
     TRUE ~ "Insignificant"))
 
 # generating a volcano plot showing significant upregulated/downregulated pathways
@@ -503,7 +503,7 @@ HERBIVORE_VOLCANO <- ggplot(herbivore_res_desc, aes(x = log2FoldChange, y = -log
        color = "Regulatory Status") +  
   theme_minimal() +
   theme(legend.position = "right") +  
-  geom_vline(xintercept = c(-2, 2), linetype = "solid", color = "black") + 
+  geom_vline(xintercept = c(-1.5, 1.5), linetype = "solid", color = "black") + 
   geom_hline(yintercept = -log10(0.05), linetype = "solid", color = "black") +   
   scale_color_manual(values = c("Upregulated" = "indianred",  
                                 "Downregulated" = "skyblue",  
@@ -519,7 +519,7 @@ nonferment_res_desc = nonferment_res_desc[, -c(8:13)]
 # filter to only include significant pathways based on p-value & log2foldchange
 nonferment_sig_res = nonferment_res_desc %>%
   filter(pvalue < 0.05) %>%
-  filter(abs(log2FoldChange) > 2) 
+  filter(abs(log2FoldChange) > 1.5) 
 nonferment_sig_res <- nonferment_sig_res[order(nonferment_sig_res$log2FoldChange),]
 
 # sorting based on absolute log2FC for top upregulated pathways
@@ -553,8 +553,8 @@ NON_FERMENTER_LOG2FC <- ggplot(data = sig20_nonferment, aes(y = reorder(descript
 # creating an additional column to indicate which pathways are upregulated/downregulated/insignificant
 nonferment_res_desc <- nonferment_res_desc %>%
   mutate(regulation = case_when(
-    pvalue < 0.05 & log2FoldChange > 2  ~ "Upregulated",
-    pvalue < 0.05 & log2FoldChange < -2 ~ "Downregulated",
+    pvalue < 0.05 & log2FoldChange > 1.5  ~ "Upregulated",
+    pvalue < 0.05 & log2FoldChange < -1.5 ~ "Downregulated",
     TRUE ~ "Insignificant"))
 
 # generating a volcano plot showing significant upregulated/downregulated pathways
@@ -565,7 +565,7 @@ NON_FERMENTER_VOLCANO <- ggplot(nonferment_res_desc, aes(x = log2FoldChange, y =
        color = "Regulatory Status") +  
   theme_minimal() +
   theme(legend.position = "right") +  
-  geom_vline(xintercept = c(-2, 2), linetype = "solid", color = "black") + 
+  geom_vline(xintercept = c(-1.5, 1.5), linetype = "solid", color = "black") + 
   geom_hline(yintercept = -log10(0.05), linetype = "solid", color = "black") +   
   scale_color_manual(values = c("Upregulated" = "indianred",  
                                 "Downregulated" = "skyblue",  
@@ -581,7 +581,7 @@ hindgut_res_desc = hindgut_res_desc[, -c(8:13)]
 # filter to only include significant pathways based on p-value & log2foldchange
 hindgut_sig_res = hindgut_res_desc %>%
   filter(pvalue < 0.05) %>%
-  filter(abs(log2FoldChange) > 2) 
+  filter(abs(log2FoldChange) > 1.5) 
 hindgut_sig_res <- hindgut_sig_res[order(hindgut_sig_res$log2FoldChange),]
 
 # sorting based on absolute log2FC for top 10 pathways 
@@ -614,8 +614,8 @@ HINDGUT_LOG2FC <- ggplot(data = sig20_hindgut, aes(y = reorder(description, log2
 # creating an additional column to indicate which pathways are upregulated/downregulated/insignificant
 hindgut_res_desc <- hindgut_res_desc %>%
   mutate(regulation = case_when(
-    pvalue < 0.05 & log2FoldChange > 2  ~ "Upregulated",
-    pvalue < 0.05 & log2FoldChange < -2 ~ "Downregulated",
+    pvalue < 0.05 & log2FoldChange > 1.5  ~ "Upregulated",
+    pvalue < 0.05 & log2FoldChange < -1.5 ~ "Downregulated",
     TRUE ~ "Insignificant"))
 
 # generating a volcano plot showing significant upregulated/downregulated pathways
@@ -626,7 +626,7 @@ HINDGUT_VOLCANO <- ggplot(hindgut_res_desc, aes(x = log2FoldChange, y = -log10(p
        color = "Regulatory Status") +  
   theme_minimal() +
   theme(legend.position = "right") +  
-  geom_vline(xintercept = c(-2, 2), linetype = "solid", color = "black") + 
+  geom_vline(xintercept = c(-1.5, 1.5), linetype = "solid", color = "black") + 
   geom_hline(yintercept = -log10(0.05), linetype = "solid", color = "black") +   
   scale_color_manual(values = c("Upregulated" = "indianred",  
                                 "Downregulated" = "skyblue",  
@@ -642,7 +642,7 @@ foregut_res_desc = foregut_res_desc[, -c(8:13)]
 # filter to only include significant pathways based on p-value & log2foldchange
 foregut_sig_res = foregut_res_desc %>%
   filter(pvalue < 0.05) %>%
-  filter(abs(log2FoldChange) > 2) 
+  filter(abs(log2FoldChange) > 1.5) 
 foregut_sig_res <- foregut_sig_res[order(foregut_sig_res$log2FoldChange),]
 
 # NOTE: only 3 downregulated pathways were identified so no further filtering was performed
@@ -655,8 +655,8 @@ FOREGUT_LOG2FC <- ggplot(data = foregut_sig_res, aes(y = reorder(description, so
 # creating an additional column to indicate which pathways are upregulated/downregulated/insignificant
 foregut_res_desc <- foregut_res_desc %>%
   mutate(regulation = case_when(
-    pvalue < 0.05 & log2FoldChange > 2  ~ "Upregulated",
-    pvalue < 0.05 & log2FoldChange < -2 ~ "Downregulated",
+    pvalue < 0.05 & log2FoldChange > 1.5  ~ "Upregulated",
+    pvalue < 0.05 & log2FoldChange < -1.5 ~ "Downregulated",
     TRUE ~ "Insignificant"))
 
 # generating a volcano plot showing significant upregulated/downregulated pathways
@@ -667,7 +667,7 @@ FOREGUT_VOLCANO <- ggplot(foregut_res_desc, aes(x = log2FoldChange, y = -log10(p
        color = "Regulatory Status") +  
   theme_minimal() +
   theme(legend.position = "right") +  
-  geom_vline(xintercept = c(-2, 2), linetype = "solid", color = "black") + 
+  geom_vline(xintercept = c(-1.5, 1.5), linetype = "solid", color = "black") + 
   geom_hline(yintercept = -log10(0.05), linetype = "solid", color = "black") +  
   scale_color_manual(values = c("Upregulated" = "indianred",  
                                 "Downregulated" = "skyblue",  
