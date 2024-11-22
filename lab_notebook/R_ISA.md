@@ -21,3 +21,7 @@
   - performed ISA using the clustered variables
   - created respective tables for each variable (eg. wild_carnivore, wild_herbivore, etc..) and combined tables for the wild group and the captive group
  - going to double check with TA to check if combining tables is okay
+
+### NOV 21, 2024 [Christine]
+- checked with TA, decided to include all of the taxonomic levels for accuracy, instead of just adding the phyla
+  - revised the code to include all levels
