@@ -42,3 +42,15 @@
 - Also tried faceting the graphs together for each variable so can compare phylums as well, especially to see which phylum are commonly significant in the categories of each variable
 - Also included code to generate mean and standard deviations of all significant differential ASVs within each phylum in every category/variable
 
+
+### Nov 26th, 2023 - [WENDY]
+- Changed to barplot instead and also recognized it is absurd to have both positive and negative values for a phylum for DESeq plots. Changed up code using template from class, with some adjustments.
+- Barplot if remove numerical identification after phylum, collapse graph into having positive and negative spans for some phylum
+- Asked Ritu and Evenlyn, decided to keep graph as it is, without excluding identifiers
+- Colour coded graphs so anything above log2fold change (captive/wild) of 0 is red and anything below is blue
+- Most bars are below 0 (blue), presenting decrease in abundance due to captivity
+- Instead decided to generate a code that can summarizes the number of values above and  below 0 for fold change
+- Also generated another code that removes the numerical identifier and collapses phylum just by phylum name, and see the number of values above and below 0 for change. This allows us to see which phylum is contributing the most to the overall decrease in phylum abundance (i.e. which phylum contributed to the prevalent observation of bars below 0) and thus, is most affected by captivity.
+- Reorganized data above into table view manually for manuscript 
+
+
