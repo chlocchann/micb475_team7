@@ -26,10 +26,8 @@
 	* Can we organize each aim into ABC and continue this format for results so it’s clearer?
 * what does this mean (in presentation rubric): All point form text is in full statements
 * do we need references in our slides?
-
 * results section thoughts
 	* ISA: last week, beecause we had so many indicator species, we were comparing the number of total indicator species for wild versus captive in every category of the variables. So in our results, should we be talking about these total numbers OR about specific species that we observe? 
 	* i think we don’t include (stat = 0.993, p = 0.005) in results, is this right?
-
 *discussion section thoughts
 	*should we format it more as a story for each variable? Instead of separating it like ISA, then DESEq, then PICRUSt. Should we go over all of these for 1 variable so we can link the 3 techniques together and the biological relevance of our findings?
