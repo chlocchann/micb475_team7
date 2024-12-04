@@ -30,11 +30,11 @@
 - Decided to continue with DESeq instead and update sample size to 10000 samples. 
 - Ended up with many more positive ASVs, though most are still negative.
 
-### Nov 4th, 2023 - [WENDY]
+### Nov 4th, 2024 - [WENDY]
 - Decided to blast the previous 2 positive ASVs (from sample size=1000) since there was confusion about sample genus of “Shigella-E. coli”. Confirmed to be E. Coli
 - Generated information regarding all the positive ASV (from sample size=10000), and analyzed using excel organizing. Excel also contains taxonomic information of each ASV. Found not many overlaps in ASV between samples. 
 
-### Nov 12th, 2023 - [WENDY]
+### Nov 12th, 2024 - [WENDY]
 - The original sample graphs (each phylum composes of different data points representing ASV and bar graphs representing variability in samples under the ASV) may look confusing and disorganized.
 - Did not want to do bar graphs because will lose insight into the prevalence of positive/negative valued ASVs (eg. If there are only 1 ASV at value 5, but 100 at value -5, will have a span of -5 to 5 when in reality, most samples are negative)
 - Maybe will try violin plots instead, gives the both the benefit of looking at abundance distribution and simplifying representation
@@ -43,7 +43,7 @@
 - Also included code to generate mean and standard deviations of all significant differential ASVs within each phylum in every category/variable
 
 
-### Nov 26th, 2023 - [WENDY]
+### Nov 26th, 2024 - [WENDY]
 - Changed to barplot instead and also recognized it is absurd to have both positive and negative values for a phylum for DESeq plots. Changed up code using template from class, with some adjustments.
 - Barplot if remove numerical identification after phylum, collapse graph into having positive and negative spans for some phylum
 - Asked Ritu and Evenlyn, decided to keep graph as it is, without excluding identifiers
