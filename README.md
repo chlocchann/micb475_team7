@@ -15,6 +15,11 @@ This GitHub repository contains code and data related to our project focusing on
 * [QIIME2](final_scripts/QIIME2_script.sh)
   
 ### R Studio
+#### DESEq2
 * [DESEq2](final_scripts/DESEq2_script.R)
+
+#### ISA
 * [ISA](final_scripts/ISA_script.R)
+
+#### PICRUSt2
 * [PICRUSt2](final_scripts/PICRUSt2_script.R)
