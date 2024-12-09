@@ -11,15 +11,17 @@ This GitHub repository contains code and data related to our project focusing on
 * [PICRUSt2 Pipeline](lab_notebook/PICRUSt2_analysis_pipeline.md)
 
 ## Finalized Code
+* [METADATA PRE-PROCESSING](final_scripts/metadata_preprocessing.R)
 ### QIIME2
 * [QIIME2](final_scripts/QIIME2_script.sh)
-  
 ### R Studio
+* [PHYLOSEQ FILE](final_scripts/phyloseq_script.R)
 #### DESEq2
-* [DESEq2](final_scripts/DESEq2_script.R)
-
+* [DESEq2 - DIET](final_scripts/DESEq2_diet_script.R)
+* [DESEq2 - GUT FERMENTATION](final_scripts/DESEq2_gutfermentation_script.R)
 #### ISA
-* [ISA](final_scripts/ISA_script.R)
-
+* [ISA - DIET](final_scripts/ISA_diet_script.R)
+* [ISA - GUT FERMENTATION](final_scripts/ISA_gutfermentation_script.R)
 #### PICRUSt2
-* [PICRUSt2](final_scripts/PICRUSt2_script.R)
+* [PICRUSt2 - DIET & GUT FERMENTATION](final_scripts/PICRUSt2_script.R)
+* [PICRUSt2 - DESEq2 CUSTOM FUNCTION](final_scripts/PICRUSt2_DESEq2_custom_function_script.R)
