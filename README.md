@@ -1,4 +1,4 @@
-# MICB 475: Data Science Research in Microbiology & Immunology
+# MICB 475: Data Science Research in Microbiology & Immunology (WINTER T1 - 2024/2025)
 This GitHub repository contains code and data related to our project focusing on the taxonomic and functional analysis of the effect of both gut fermentation physiology and diet type on gut microbiome diversity in the captive vs wild animals dataset obtained from https://doi.org/10.1093/icb/icx090.
 
 ## Meeting Minutes
